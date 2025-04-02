@@ -70,6 +70,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun ComplicatedScreen(){
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
