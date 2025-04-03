@@ -4,22 +4,27 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.Dimension
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -27,7 +32,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.machete3845.composeplayground.ui.theme.ComposePlaygroundTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,14 +42,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePlaygroundTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    )
-                }
+                ConstraintLayoutExample()
             }
         }
     }
@@ -71,9 +71,69 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ComplicatedScreen(){
+fun ConstraintLayoutExample() {
+    ConstraintLayout(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    ) {
+        val (image, title, subtitle, button1, button2) = createRefs()
 
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .clip(CircleShape)
+                .background(Color.Gray)
+                .constrainAs(image) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                }
+        )
+
+        Text(
+            "Заголовок",
+            modifier = Modifier.constrainAs(title) {
+                top.linkTo(image.top)
+                start.linkTo(image.end, margin = 16.dp)
+            }
+        )
+
+        Text(
+            "Подзаголовок с дополнительной информацией",
+            modifier = Modifier.constrainAs(subtitle) {
+                top.linkTo(title.bottom, margin = 8.dp)
+                start.linkTo(title.start)
+                end.linkTo(parent.end)
+                width = androidx.constraintlayout.compose.Dimension.fillToConstraints
+            }
+        )
+
+        Button(
+            onClick = { },
+            modifier = Modifier.constrainAs(button1) {
+                top.linkTo(image.bottom, margin = 16.dp)
+                start.linkTo(parent.start)
+                end.linkTo(button2.start, margin = 8.dp)
+                width =androidx.constraintlayout.compose.Dimension.fillToConstraints
+            }
+        ) {
+            Text("Кнопка 1")
+        }
+
+        Button(
+            onClick = { },
+            modifier = Modifier.constrainAs(button2) {
+                top.linkTo(button1.top)
+                start.linkTo(button1.end, margin = 8.dp)
+                end.linkTo(parent.end)
+                width = androidx.constraintlayout.compose.Dimension.fillToConstraints
+            }
+        ) {
+            Text("Кнопка 2")
+        }
+    }
 }
+
 
 @Preview(showBackground = true)
 @Composable
