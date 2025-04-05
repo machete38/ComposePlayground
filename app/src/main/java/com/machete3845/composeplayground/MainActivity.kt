@@ -12,9 +12,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -48,6 +51,7 @@ class MainActivity : ComponentActivity() {
                 Column {
                     ConstraintLayoutExample()
                     CombinedExample()
+                    ScrollableLists()
                 }
             }
         }
@@ -171,6 +175,43 @@ fun CounterScreen(modifier: Modifier = Modifier){
         }
     }
 
+}
+
+@Composable
+fun ScrollableLists() {
+    Column {
+        LazyColumn(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+        ) {
+            items(100) { index ->
+                Text(
+                    text = "Вертикальный элемент $index",
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .fillMaxWidth()
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        LazyRow(
+            modifier = Modifier
+                .height(100.dp)
+                .fillMaxWidth()
+        ) {
+            items(50) { index ->
+                Text(
+                    text = "Горизонтальный элемент $index",
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .width(200.dp)
+                )
+            }
+        }
+    }
 }
 
 @Composable
