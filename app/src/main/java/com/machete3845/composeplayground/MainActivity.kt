@@ -1,5 +1,6 @@
 package com.machete3845.composeplayground
 
+import android.R.attr.onClick
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -26,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -41,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.machete3845.composeplayground.navigation.MyAppNavHost
 import com.machete3845.composeplayground.ui.theme.ComposePlaygroundTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,11 +51,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePlaygroundTheme {
-                Column {
-                    ConstraintLayoutExample()
-                    CombinedExample()
-                    ScrollableLists()
-                }
+               AnimatedContentBox() { currentState, onStateChange ->
+                   Button(
+                       modifier = Modifier.size(100.dp),
+                       onClick = {
+                            onStateChange(!currentState)
+                       }
+                   ) {
+                       Text(
+                           text = "Press me",
+                           color = Color.Blue
+                       )
+                   }
+               }
+//                Column {
+//                    ConstraintLayoutExample()
+//                    StaggeredGridExample()
+//                }
             }
         }
     }
