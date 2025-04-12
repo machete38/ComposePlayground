@@ -51,19 +51,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePlaygroundTheme {
-               AnimatedContentBox() { currentState, onStateChange ->
-                   Button(
-                       modifier = Modifier.size(100.dp),
-                       onClick = {
-                            onStateChange(!currentState)
-                       }
-                   ) {
-                       Text(
-                           text = "Press me",
-                           color = Color.Blue
-                       )
-                   }
-               }
+               ModalBottomSheetExample()
 //                Column {
 //                    ConstraintLayoutExample()
 //                    StaggeredGridExample()
