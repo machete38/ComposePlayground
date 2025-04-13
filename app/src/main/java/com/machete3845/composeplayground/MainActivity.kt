@@ -51,11 +51,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposePlaygroundTheme {
-               ModalBottomSheetExample()
-//                Column {
-//                    ConstraintLayoutExample()
-//                    StaggeredGridExample()
-//                }
+//               ModalBottomSheetExample()
+                Column {
+                    ConstraintLayoutExample()
+                    StaggeredGridExample()
+                }
             }
         }
     }
