@@ -19,12 +19,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,13 +53,16 @@ import com.machete3845.composeplayground.ui.theme.ComposePlaygroundTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val mainViewModel = MainViewModel()
         setContent {
             ComposePlaygroundTheme {
-//               ModalBottomSheetExample()
-                Column {
-                    ConstraintLayoutExample()
-                    StaggeredGridExample()
-                }
+                InfiniteScrollList(mainViewModel)
+////               ModalBottomSheetExample()
+//                Column {
+//                    ConstraintLayoutExample()
+//                    StaggeredGridExample()
+//                }
             }
         }
     }
@@ -232,6 +239,35 @@ fun CombinedExample() {
             modifier = Modifier.weight(1f)
         ) {
             Text("Правая")
+        }
+    }
+}
+
+@Composable
+fun InfiniteScrollList(viewModel: MainViewModel) {
+    val listState = rememberLazyListState()
+    val items = viewModel.items.value
+
+    val shouldLoadMore = remember {
+        derivedStateOf {
+            val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull()
+                ?: return@derivedStateOf false
+            lastVisibleItem.index == items.size - 1
+        }
+    }
+
+    LaunchedEffect(shouldLoadMore.value) {
+        if (shouldLoadMore.value) {
+            viewModel.loadMoreItems()
+        }
+    }
+
+    LazyColumn(
+        state = listState,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(items){ item ->
+            Text(text = item)
         }
     }
 }
