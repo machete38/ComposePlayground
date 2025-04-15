@@ -57,8 +57,16 @@ class MainActivity : ComponentActivity() {
         val mainViewModel = MainViewModel()
         setContent {
             ComposePlaygroundTheme {
-                InfiniteScrollList(mainViewModel)
-////               ModalBottomSheetExample()
+                Column {
+                    Text("Анимация размера")
+                    AnimatedSizeExample()
+                    Text("Анимация цвета")
+                    AnimatedColorExample()
+                    Text("Пульсирующая анимация")
+                    PulsatingAnimation()
+                }
+//                InfiniteScrollList(mainViewModel)
+//               ModalBottomSheetExample()
 //                Column {
 //                    ConstraintLayoutExample()
 //                    StaggeredGridExample()
