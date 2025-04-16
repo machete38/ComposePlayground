@@ -62,8 +62,8 @@ class MainActivity : ComponentActivity() {
                     AnimatedSizeExample()
                     Text("Анимация цвета")
                     AnimatedColorExample()
-                    Text("Пульсирующая анимация")
-                    PulsatingAnimation()
+                    Text("Сложная анимация")
+                    TransitionExample()
                 }
 //                InfiniteScrollList(mainViewModel)
 //               ModalBottomSheetExample()

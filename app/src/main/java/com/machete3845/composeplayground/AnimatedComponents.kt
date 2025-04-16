@@ -11,13 +11,16 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -121,4 +125,65 @@ fun PulsatingAnimation() {
                 .background(Color.Red)
         )
     }
+
+
 }
+
+@Composable
+fun TransitionExample(){
+    var state by remember { mutableStateOf(BallState.Start) }
+
+    val transition = updateTransition(targetState = state, label = "BallTransition")
+
+    val offsetX by transition.animateFloat(
+        transitionSpec = { tween(durationMillis = 1000)},
+        label = "offsetX"
+    ){
+        ballState ->
+        when(ballState){
+            BallState.Start ->  0f
+            BallState.End -> 300f
+        }
+    }
+
+    val offsetY by transition.animateFloat(
+        transitionSpec = { tween(durationMillis = 1000)},
+        label = "offsetY"
+    ){
+        ballState ->
+        when(ballState){
+            BallState.Start -> 0f
+            BallState.End -> 200f
+        }
+    }
+
+    val scale by transition.animateFloat(
+        transitionSpec = { tween(durationMillis = 1000)},
+        label = "scale"
+    ){
+        ballState ->
+        when (ballState){
+            BallState.Start -> 1f
+            BallState.End -> 2f
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize()){
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .offset(offsetX.dp, offsetY.dp)
+                .scale(scale)
+                .clip(CircleShape)
+                .background(Color.Red)
+                .clickable{
+                    state = when (state){
+                        BallState.Start -> BallState.End
+                        BallState.End -> BallState.Start
+                    }
+                }
+        )
+    }
+}
+
+enum class BallState { Start, End }
