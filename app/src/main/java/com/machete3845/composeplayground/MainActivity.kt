@@ -47,7 +47,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.machete3845.composeplayground.navigation.MyAppNavHost
+import com.machete3845.composeplayground.screens.ThemedScreen
 import com.machete3845.composeplayground.ui.theme.ComposePlaygroundTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,12 +58,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePlaygroundTheme {
                 Column {
-                    Text("Анимация размера")
-                    AnimatedSizeExample()
-                    Text("Анимация цвета")
-                    AnimatedColorExample()
-                    Text("Сложная анимация")
-                    TransitionExample()
+                    ThemedScreen()
+//                    Text("Анимация размера")
+//                    AnimatedSizeExample()
+//                    Text("Анимация цвета")
+//                    AnimatedColorExample()
+//                    Text("Сложная анимация")
+//                    TransitionExample()
                 }
 //                InfiniteScrollList(mainViewModel)
 //               ModalBottomSheetExample()
@@ -250,6 +251,8 @@ fun CombinedExample() {
         }
     }
 }
+
+
 
 @Composable
 fun InfiniteScrollList(viewModel: MainViewModel) {
