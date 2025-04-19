@@ -47,6 +47,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.machete3845.composeplayground.navigation.NewFlowNavHost
 import com.machete3845.composeplayground.screens.ThemedScreen
 import com.machete3845.composeplayground.ui.theme.ComposePlaygroundTheme
 
@@ -58,7 +59,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePlaygroundTheme {
                 Column {
-                    ThemedScreen()
+                    NewFlowNavHost()
+//                    ThemedScreen()
 //                    Text("Анимация размера")
 //                    AnimatedSizeExample()
 //                    Text("Анимация цвета")
