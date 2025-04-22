@@ -9,4 +9,5 @@ object NavRoutes {
     // Новый flow
     const val MENU = "Меню"
     const val GESTURES = "Жесты"
+    const val DRAG_AND_DROP = "Перетаскивание"
 }
