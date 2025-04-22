@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.machete3845.composeplayground.screens.DragAndDropScreen
 import com.machete3845.composeplayground.screens.GesturesScreen
 import com.machete3845.composeplayground.screens.MenuScreen
+import com.machete3845.composeplayground.screens.MultiTouchScreen
 
 @Composable
 fun NewFlowNavHost(
@@ -26,6 +27,10 @@ fun NewFlowNavHost(
                 navigateToDragAndDropScreen =
                     {
                         navController.navigate(NavRoutes.DRAG_AND_DROP)
+                    },
+                navigateToMultiTouchScreen =
+                    {
+                        navController.navigate(NavRoutes.MULTI_TOUCH)
                     }
             )
         }
@@ -34,6 +39,9 @@ fun NewFlowNavHost(
         }
         composable(NavRoutes.DRAG_AND_DROP) {
             DragAndDropScreen()
+        }
+        composable(NavRoutes.MULTI_TOUCH) {
+            MultiTouchScreen()
         }
     }
 }
