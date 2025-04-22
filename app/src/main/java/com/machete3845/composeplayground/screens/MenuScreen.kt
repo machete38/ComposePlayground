@@ -4,11 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.machete3845.composeplayground.navigation.NavRoutes
 
 @Composable
 fun MenuScreen(
     navigateToGesturesScreen: () -> Unit,
-    navigateToDragAndDropScreen: () -> Unit
+    navigateToDragAndDropScreen: () -> Unit,
+    navigateToMultiTouchScreen: () -> Unit
 ){
     Column {
         Button(
@@ -20,6 +22,12 @@ fun MenuScreen(
             onClick = navigateToDragAndDropScreen
         ) {
             Text("Перетаскивание")
+        }
+
+        Button(
+            onClick = navigateToMultiTouchScreen
+        ) {
+            Text(NavRoutes.MULTI_TOUCH)
         }
     }
 }
