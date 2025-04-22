@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.machete3845.composeplayground.screens.DragAndDropScreen
 import com.machete3845.composeplayground.screens.GesturesScreen
 import com.machete3845.composeplayground.screens.MenuScreen
 
@@ -18,10 +19,21 @@ fun NewFlowNavHost(
         startDestination = startDestination
     ){
         composable(NavRoutes.MENU) {
-            MenuScreen { navController.navigate(NavRoutes.GESTURES) }
+            MenuScreen(
+                navigateToGesturesScreen = {
+                    navController.navigate(NavRoutes.GESTURES)
+                },
+                navigateToDragAndDropScreen =
+                    {
+                        navController.navigate(NavRoutes.DRAG_AND_DROP)
+                    }
+            )
         }
         composable(NavRoutes.GESTURES) {
             GesturesScreen()
+        }
+        composable(NavRoutes.DRAG_AND_DROP) {
+            DragAndDropScreen()
         }
     }
 }
