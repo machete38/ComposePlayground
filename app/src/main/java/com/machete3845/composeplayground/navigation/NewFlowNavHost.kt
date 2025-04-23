@@ -14,25 +14,18 @@ import com.machete3845.composeplayground.screens.MultiTouchScreen
 fun NewFlowNavHost(
     navController: NavHostController = rememberNavController(),
     startDestination: String = NavRoutes.MENU
-){
+) {
     NavHost(
-        navController = navController,
-        startDestination = startDestination
-    ){
+        navController = navController, startDestination = startDestination
+    ) {
         composable(NavRoutes.MENU) {
-            MenuScreen(
-                navigateToGesturesScreen = {
-                    navController.navigate(NavRoutes.GESTURES)
-                },
-                navigateToDragAndDropScreen =
-                    {
-                        navController.navigate(NavRoutes.DRAG_AND_DROP)
-                    },
-                navigateToMultiTouchScreen =
-                    {
-                        navController.navigate(NavRoutes.MULTI_TOUCH)
-                    }
-            )
+            MenuScreen(navigateToGesturesScreen = {
+                navController.navigate(NavRoutes.GESTURES)
+            }, navigateToDragAndDropScreen = {
+                navController.navigate(NavRoutes.DRAG_AND_DROP)
+            }, navigateToMultiTouchScreen = {
+                navController.navigate(NavRoutes.MULTI_TOUCH)
+            })
         }
         composable(NavRoutes.GESTURES) {
             GesturesScreen()
