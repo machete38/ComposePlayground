@@ -27,8 +27,8 @@ import com.machete3845.composeplayground.R
 fun MultiTouchScreen()
 {
     Column {
-//        Text("Обработка нескольких касаний")
-//        MultiTouchExample()
+        Text("Обработка нескольких касаний")
+        MultiTouchExample()
         Text("Pinch-To-Zoom")
         PinchToZoomExample()
     }
