@@ -68,12 +68,12 @@ class MainActivity : ComponentActivity() {
 //                    Text("Сложная анимация")
 //                    TransitionExample()
                 }
-//                InfiniteScrollList(mainViewModel)
-//               ModalBottomSheetExample()
-//                Column {
-//                    ConstraintLayoutExample()
-//                    StaggeredGridExample()
-//                }
+                InfiniteScrollList(mainViewModel)
+                ModalBottomSheetExample()
+                Column {
+                    ConstraintLayoutExample()
+                    StaggeredGridExample()
+                }
             }
         }
     }
