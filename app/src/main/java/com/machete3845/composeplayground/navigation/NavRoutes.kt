@@ -11,4 +11,5 @@ object NavRoutes {
     const val GESTURES = "Жесты"
     const val DRAG_AND_DROP = "Перетаскивание"
     const val MULTI_TOUCH = "Многоточечные жесты"
+    const val ANIMATIONS = "Анимации"
 }

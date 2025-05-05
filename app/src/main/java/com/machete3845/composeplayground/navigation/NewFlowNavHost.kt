@@ -36,5 +36,8 @@ fun NewFlowNavHost(
         composable(NavRoutes.MULTI_TOUCH) {
             MultiTouchScreen()
         }
+        composable(NavRoutes.MULTI_TOUCH) {
+            MultiTouchScreen()
+        }
     }
 }
