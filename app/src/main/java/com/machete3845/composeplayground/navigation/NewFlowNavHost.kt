@@ -1,5 +1,6 @@
 package com.machete3845.composeplayground.navigation
 
+import AnimationsScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -25,6 +26,8 @@ fun NewFlowNavHost(
                 navController.navigate(NavRoutes.DRAG_AND_DROP)
             }, navigateToMultiTouchScreen = {
                 navController.navigate(NavRoutes.MULTI_TOUCH)
+            }, navigateToAnimationScreen = {
+                navController.navigate(NavRoutes.ANIMATIONS)
             })
         }
         composable(NavRoutes.GESTURES) {
@@ -38,6 +41,9 @@ fun NewFlowNavHost(
         }
         composable(NavRoutes.MULTI_TOUCH) {
             MultiTouchScreen()
+        }
+        composable(NavRoutes.ANIMATIONS) {
+            AnimationsScreen()
         }
     }
 }

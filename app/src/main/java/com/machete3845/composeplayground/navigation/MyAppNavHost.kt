@@ -1,5 +1,6 @@
 package com.machete3845.composeplayground.navigation
 
+import AnimationsScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -7,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.machete3845.composeplayground.navigation.NavRoutes
 import com.machete3845.composeplayground.screens.DetailsScreen
 import com.machete3845.composeplayground.screens.HomeScreen
 import com.machete3845.composeplayground.screens.ProfileScreen
