@@ -10,7 +10,8 @@ import com.machete3845.composeplayground.navigation.NavRoutes
 fun MenuScreen(
     navigateToGesturesScreen: () -> Unit,
     navigateToDragAndDropScreen: () -> Unit,
-    navigateToMultiTouchScreen: () -> Unit
+    navigateToMultiTouchScreen: () -> Unit,
+    navigateToAnimationScreen: () -> Unit,
 ){
     Column {
         Button(
@@ -28,6 +29,11 @@ fun MenuScreen(
             onClick = navigateToMultiTouchScreen
         ) {
             Text(NavRoutes.MULTI_TOUCH)
+        }
+        Button(
+            onClick = navigateToAnimationScreen
+        ) {
+            Text(NavRoutes.ANIMATIONS)
         }
     }
 }
