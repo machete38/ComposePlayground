@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.machete3845.composeplayground.screens.DragAndDropScreen
 import com.machete3845.composeplayground.screens.GesturesScreen
 import com.machete3845.composeplayground.screens.MenuScreen
+import com.machete3845.composeplayground.screens.ModifiersScreen
 import com.machete3845.composeplayground.screens.MultiTouchScreen
 
 @Composable
@@ -28,7 +29,10 @@ fun NewFlowNavHost(
                 navController.navigate(NavRoutes.MULTI_TOUCH)
             }, navigateToAnimationScreen = {
                 navController.navigate(NavRoutes.ANIMATIONS)
-            })
+            },
+                navigateToModifiersScreen = {
+                    navController.navigate(NavRoutes.MODIFIERS)
+                })
         }
         composable(NavRoutes.GESTURES) {
             GesturesScreen()
@@ -44,6 +48,9 @@ fun NewFlowNavHost(
         }
         composable(NavRoutes.ANIMATIONS) {
             AnimationsScreen()
+        }
+        composable(NavRoutes.MODIFIERS){
+            ModifiersScreen()
         }
     }
 }
