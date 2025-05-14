@@ -12,6 +12,7 @@ fun MenuScreen(
     navigateToDragAndDropScreen: () -> Unit,
     navigateToMultiTouchScreen: () -> Unit,
     navigateToAnimationScreen: () -> Unit,
+    navigateToModifiersScreen: () -> Unit,
 ){
     Column {
         Button(
@@ -34,6 +35,11 @@ fun MenuScreen(
             onClick = navigateToAnimationScreen
         ) {
             Text(NavRoutes.ANIMATIONS)
+        }
+        Button(
+            onClick = navigateToModifiersScreen
+        ) {
+            Text(NavRoutes.MODIFIERS)
         }
     }
 }
