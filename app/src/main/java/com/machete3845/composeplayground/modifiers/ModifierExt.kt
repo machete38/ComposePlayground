@@ -28,6 +28,7 @@ fun Modifier.customBorder(
         .border(width = width, color = color, shape = shape)
 }
 
+
 fun Modifier.pulsatingEffect(
     pulseFraction: Float = 0.2f,
     duration: Int = 1000
