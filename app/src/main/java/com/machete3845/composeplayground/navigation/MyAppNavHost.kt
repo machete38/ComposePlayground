@@ -22,8 +22,10 @@ fun MyAppNavHost(
         startDestination = startDestination
     ) {
         composable(NavRoutes.HOME) {
+            val itemId = 10
+            val name = "andrey"
             HomeScreen(
-                onNavigateToDetails = { navController.navigate(NavRoutes.DETAILS) }
+                onNavigateToDetails = { "${navController.navigate(NavRoutes.DETAILS)}/$itemId?name=$name"}
             )
         }
         composable(

@@ -13,4 +13,5 @@ object NavRoutes {
     const val MULTI_TOUCH = "Многоточечные жесты"
     const val ANIMATIONS = "Анимации"
     const val MODIFIERS = "Модификаторы"
+    const val CANVAS = "Canvas"
 }

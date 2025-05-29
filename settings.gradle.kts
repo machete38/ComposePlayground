@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "ComposePlayground"
 include(":app")
-include(":animations")
+include(":features:animations")
+include(":features:composePreview")
+
+include(":features:composeCanvas")
