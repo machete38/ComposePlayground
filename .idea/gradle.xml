@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/features/animations" />
             <option value="$PROJECT_DIR$/features/composeCanvas" />
             <option value="$PROJECT_DIR$/features/composePreview" />
+            <option value="$PROJECT_DIR$/features/pointerInputs" />
           </set>
         </option>
       </GradleProjectSettings>
