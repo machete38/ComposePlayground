@@ -25,3 +25,4 @@ include(":features:animations")
 include(":features:composePreview")
 
 include(":features:composeCanvas")
+include(":features:pointerInputs")
